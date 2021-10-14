@@ -1,0 +1,15 @@
+#rightmenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  #rightmenu {
+    display: none;
+  }
+}
+
+#rightmenu svg {
+  color: #fff;
+}
