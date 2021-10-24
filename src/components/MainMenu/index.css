@@ -1,0 +1,30 @@
+#mainmenu {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+@media only screen and (max-width: 768px) {
+  #mainmenu {
+    display: none;
+  }
+}
+
+#mainmenu .MuiListItemText-primary {
+  color: #666;
+  text-transform: uppercase;
+}
+
+#leftburger {
+  display: none;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #fff;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 768px) {
+  #leftburger {
+    display: initial;
+  }
+}
