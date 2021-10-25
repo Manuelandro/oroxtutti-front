@@ -21,7 +21,7 @@ const stripePromise = loadStripe('pk_test_51JjU57BCuKZVEUTZzOUEo2lmQYhREGf0gVSeI
 
 
 const App: React.FC = () => {
-  const token = useAppSelector(s => s.user.token)
+  const token = useAppSelector(s => s.customer.token)
 
   return (
     <>

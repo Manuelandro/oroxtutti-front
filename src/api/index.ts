@@ -37,8 +37,8 @@ export async function userRegister(email: string, password: string, invite: stri
 }
 
 
-export async function userGetData(token: string) {
-    const res = await fetch('http://localhost:3001/customers/create', {
+export async function userInfo(token: string) {
+    const res = await fetch('http://localhost:3001/customers/info', {
         method: 'GET',
         headers: {
             "Content-Type": 'application/json',

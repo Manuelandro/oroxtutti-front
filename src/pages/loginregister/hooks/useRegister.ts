@@ -1,7 +1,7 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { userRegister } from '../../../api'
-import { setUserToken } from '../../../redux/reducers/user'
+import { setCustomerToken } from '../../../redux/reducers/customer'
 
 type IReturn = [
     boolean,
@@ -51,7 +51,7 @@ export default function useRegister(): IReturn {
         try {
             const res = await userRegister(email, password, invitationCode)
             localStorage.setItem('token', res.token)
-            dispatch(setUserToken(res.token))
+            dispatch(setCustomerToken(res.token))
             setSuccess(true)
         } catch (err: any) {
             console.log(err)
