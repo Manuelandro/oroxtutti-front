@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
-import MenuList from '@mui/material/MenuList';
-import MenuItem from '@mui/material/MenuItem';
+import Grid from '@mui/material/Grid'
 import SearchIcon from '@mui/icons-material/Search';
-import ShoppingBasketOutlinedIcon from '@mui/icons-material/ShoppingBasketOutlined';
+import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
+import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
 import { useAppSelector } from '../../redux/hooks'
 import { setCustomer } from '../../redux/reducers/customer'
 import { userInfo } from '../../api'
@@ -26,14 +26,17 @@ const RightMenu: React.FC = () => {
     }, [token])
 
     return (
-        <MenuList id="rightmenu">
-             <MenuItem>
+        <Grid container spacing={2} id="rightmenu" justifyContent="flex-end">
+            <Grid item>
+                <PersonOutlinedIcon />
+            </Grid>
+            <Grid item>
                 <SearchIcon />
-            </MenuItem>
-             <MenuItem>
-                <ShoppingBasketOutlinedIcon />
-            </MenuItem>
-        </MenuList>
+            </Grid>
+             <Grid item>
+                <ShoppingBagOutlinedIcon />
+            </Grid>
+        </Grid>
     )
 }
 
