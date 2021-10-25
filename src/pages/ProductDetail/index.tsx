@@ -1,53 +1,21 @@
-import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import React from 'react'
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
 import ImageGallery from 'react-image-gallery';
-import { ProductType } from '../../types/Product'
+import useAddToCart from './hooks/useAddToCart'
 import "react-image-gallery/styles/css/image-gallery.css";
+import useGetProduct from './hooks/useGetProduct';
+
 
 const ProductDetail: React.FC = () => {
-    const [loading, setLoading] = useState(true)
-    const params = useParams() as { [k: string]: any }
-    const [product, setProduct] = useState({} as ProductType)
-    const [price, setPrice] = useState({})
+    const [loading, product, images] = useGetProduct()
+    const [loadingAdd, addToCart] = useAddToCart()
 
-    console.log(params)
 
-    useEffect(() => {
-        ;(async function() {
-            try {
-                const res = await fetch('http://localhost:3001/product', {
-                    headers: {
-                        "Content-Type": 'application/json'
-                    },
-                    method: 'POST',
-                    body: JSON.stringify({
-                        productId: params?.id
-                    })
-                }).then(res => res.json())
-
-                setProduct(res)
-
-                const res2 = await fetch('http://localhost:3001/product/price', {
-                    headers: {
-                        "Content-Type": 'application/json'
-                    },
-                    method: 'POST',
-                    body: JSON.stringify({
-                        productId: params?.id
-                    })
-                }).then(res => res.json())
-
-                setPrice(res2.price.data[0])
-
-            } catch (err) {
-                console.log(err)
-            } finally {
-                setLoading(false)
-            }
-        })()
-    }, [])
+    if (loading) {
+        return null
+    }
 
 
     return (
@@ -56,9 +24,10 @@ const ProductDetail: React.FC = () => {
                 <Typography variant="h2">
                     {product.name}
                 </Typography>
+                <ImageGallery items={images} showThumbnails={images.length > 1}/>
             </Grid>
             <Grid item>
-
+                <Button variant="contained" onClick={addToCart}></Button>
             </Grid>
         </Grid>
     )
