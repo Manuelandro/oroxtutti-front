@@ -1,5 +1,5 @@
-export async function userLogin(email: string, password: string) {
-    const res = await fetch('/api/login', {
+export async function customerLogin(email: string, password: string) {
+    const res = await fetch('http://localhost:3001/customers/login', {
         method: 'POST',
         headers: {
             "Content-Type": 'application/json'
@@ -17,15 +17,16 @@ export async function userLogin(email: string, password: string) {
     return res
 }
 
-export async function userRegister(email: string, password: string, invite: string) {
+export async function userRegister(name: string, email: string, password: string) {
     const res = await fetch('http://localhost:3001/customers/create', {
         method: 'POST',
         headers: {
             "Content-Type": 'application/json'
         },
         body: JSON.stringify({
-            email: String(email),
-            password: String(password),
+            name,
+            email,
+            password,
         })
     }).then(res => res.json())
 

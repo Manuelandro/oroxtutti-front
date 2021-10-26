@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom'
 import Grid from '@mui/material/Grid'
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
@@ -11,6 +12,7 @@ import './index.css'
 
 const RightMenu: React.FC = () => {
     const dispatch = useDispatch()
+    const history = useHistory()
     const token = useAppSelector(s => s.customer.token)
 
     useEffect(() => {
@@ -28,7 +30,7 @@ const RightMenu: React.FC = () => {
     return (
         <Grid container spacing={2} id="rightmenu" justifyContent="flex-end">
             <Grid item>
-                <PersonOutlinedIcon />
+                <PersonOutlinedIcon onClick={() => history.push('/account')}/>
             </Grid>
             <Grid item>
                 <SearchIcon />

@@ -14,6 +14,7 @@ import LoginRegister from './pages/loginregister'
 import Home from './pages/home'
 import ProductDetail from './pages/productdetail'
 import Cart from './pages/cart'
+import Account from './pages/account'
 import { useAppSelector } from './redux/hooks';
 
 const stripePromise = loadStripe('pk_test_51JjU57BCuKZVEUTZzOUEo2lmQYhREGf0gVSeIjuLQPpyPOSpwuoFmFUksV2e9iO01PIWFsv6Fe5a9JWlTdf21rfO00Xb5eaWaf')
@@ -41,8 +42,8 @@ const App: React.FC = () => {
     <ThemeProvider theme={monileTheme}>
       <CssBaseline />
       <div className="App">
-          <Header />
           <Router>
+              <Header />
               <Switch>
                   <Route path="/" exact>
                       <Home />
@@ -62,9 +63,17 @@ const App: React.FC = () => {
                   </Route>
                   <Route path="/login-register">
                       {token ? (
-                            <Redirect to={{ pathname: "/" }} />
+                            <Redirect to={{ pathname: "/account" }} />
                           ) : (
                             <LoginRegister />
+                          )
+                      }
+                  </Route>
+                  <Route path="/account">
+                      {!token ? (
+                            <Redirect to={{ pathname: "/login-register" }} />
+                          ) : (
+                            <Account />
                           )
                       }
                   </Route>

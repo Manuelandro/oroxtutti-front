@@ -1,0 +1,7 @@
+{
+    "Errors": {
+        "Incorrect fields": "I dati inseriti non sono corretti",
+        "User already exists": "L'utente inserito è già esistente",
+        "User not exists": "L'utente richiesto non esiste"
+    }
+}
