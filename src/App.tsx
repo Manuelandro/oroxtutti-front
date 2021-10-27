@@ -12,6 +12,7 @@ import { Elements } from '@stripe/react-stripe-js'
 import Header from './components/Header'
 import LoginRegister from './pages/loginregister'
 import Home from './pages/home'
+import Category from './pages/category'
 import ProductDetail from './pages/productdetail'
 import Cart from './pages/cart'
 import Account from './pages/account'
@@ -47,6 +48,9 @@ const App: React.FC = () => {
               <Switch>
                   <Route path="/" exact>
                       <Home />
+                  </Route>
+                  <Route path="/category/:category">
+                      <Category />
                   </Route>
                   <Route path="/product/:id">
                       <ProductDetail />
