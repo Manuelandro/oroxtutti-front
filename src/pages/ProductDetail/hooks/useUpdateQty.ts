@@ -1,25 +1,25 @@
 import { useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { addToCart } from 'api'
+import { updateQty } from 'api'
 import { useAppSelector } from 'redux/hooks'
 import { setCart } from 'redux/reducers/cart'
 
-type IReturn = [boolean, () => void]
+type IReturn = [boolean, (qty: number) => Promise<void>]
 
-export default function useAddToCart(): IReturn {
+export default function useUpdateQty(): IReturn {
     const dispatch = useDispatch()
     const { id } = useParams() as { [k: string]: string }
     const token = useAppSelector(s => s.customer.token)
-    const [loadingAdd, setLoadingAdd] = useState(false)
+    const [loadingUpdate, setLoadingUpdate] = useState(false)
 
 
-    const add = async () => {
-        if (!token) return
+    const update = async (qty: number) => {
+        if (!token || !qty) return
 
-        setLoadingAdd(true)
+        setLoadingUpdate(true)
         try {
-            const res = await addToCart(token, id, 1)
+            const res = await updateQty(token, id, qty)
             dispatch(setCart(res))
         } catch (err) {
             console.log(err)
@@ -27,6 +27,6 @@ export default function useAddToCart(): IReturn {
     }
 
 
-    return [loadingAdd, add]
+    return [loadingUpdate, update]
 
 }

@@ -54,3 +54,64 @@ export async function userInfo(token: string) {
 
     return res
 }
+
+/** CART */
+
+export async function getCart(token: string) {
+    const res = await fetch('http://localhost:3001/cart/get', {
+        headers: {
+            "Content-Type": 'application/json',
+            "Authorization": `Beared ${token}`
+        },
+        method: 'GET'
+    }).then(res => res.json())
+
+    if (res.error) {
+        throw new Error(res.error)
+    }
+
+    return res
+
+}
+
+export async function addToCart(token: string, productId: string, qty: number) {
+    const res = await fetch('http://localhost:3001/cart/add', {
+        headers: {
+            "Content-Type": 'application/json',
+            "Authorization": `Bearer ${token}`
+        },
+        method: 'POST',
+        body: JSON.stringify({
+            productId,
+            qty
+        })
+    }).then(res => res.json())
+
+    if (res.error) {
+        throw new Error(res.error)
+    }
+
+    return res
+
+}
+
+export async function updateQty(token: string, productId: string, qty: number) {
+    const res = await fetch('http://localhost:3001/cart/update', {
+        headers: {
+            "Content-Type": 'application/json',
+            "Authorization": `Bearer ${token}`
+        },
+        method: 'PUT',
+        body: JSON.stringify({
+            productId,
+            qty
+        })
+    }).then(res => res.json())
+
+    if (res.error) {
+        throw new Error(res.error)
+    }
+
+    return res
+
+}

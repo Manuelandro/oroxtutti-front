@@ -5,9 +5,10 @@ import Grid from '@mui/material/Grid'
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingBagOutlinedIcon from '@mui/icons-material/ShoppingBagOutlined';
 import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
-import { useAppSelector } from '../../redux/hooks'
-import { setCustomer } from '../../redux/reducers/customer'
-import { userInfo } from '../../api'
+import { useAppSelector } from 'redux/hooks'
+import { setCustomer } from 'redux/reducers/customer'
+import { setCart } from 'redux/reducers/cart'
+import { userInfo, getCart } from 'api'
 import './index.css'
 
 const RightMenu: React.FC = () => {
@@ -19,8 +20,10 @@ const RightMenu: React.FC = () => {
         if (!token) return
         ;(async function() {
             try {
-                const res = await userInfo(token)
-                dispatch(setCustomer(res))
+                const user = await userInfo(token)
+                dispatch(setCustomer(user))
+                const cart = await getCart(token)
+                dispatch(setCart(cart))
             } catch (err) {
                 console.log(err)
             }
@@ -36,7 +39,7 @@ const RightMenu: React.FC = () => {
                 <SearchIcon />
             </Grid>
              <Grid item>
-                <ShoppingBagOutlinedIcon />
+                <ShoppingBagOutlinedIcon onClick={() => history.push('/cart')} />
             </Grid>
         </Grid>
     )

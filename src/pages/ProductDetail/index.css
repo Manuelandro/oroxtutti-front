@@ -1,0 +1,7 @@
+.product-detail > .MuiGrid-root {
+  padding-top: 0;
+}
+
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+  max-width: 380px;
+}
