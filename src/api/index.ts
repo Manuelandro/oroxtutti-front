@@ -115,3 +115,42 @@ export async function updateQty(token: string, productId: string, qty: number) {
     return res
 
 }
+
+
+export async function removeFromCart(token: string, productId: string) {
+    const res = await fetch('http://localhost:3001/cart/remove', {
+        headers: {
+            "Content-Type": 'application/json',
+            "Authorization": `Bearer ${token}`
+        },
+        method: 'DELETE',
+        body: JSON.stringify({
+            productId,
+        })
+    }).then(res => res.json())
+
+    if (res.error) {
+        throw new Error(res.error)
+    }
+
+    return res
+
+}
+
+
+export async function createSession(token: string) {
+    const res = await fetch('http://localhost:3001/payment/create', {
+        headers: {
+            "Content-Type": 'application/json',
+            "Authorization": `Bearer ${token}`
+        },
+        method: 'POST'
+    }).then(res => res.json())
+
+    if (res.error) {
+        throw new Error(res.error)
+    }
+
+    return res
+
+}
