@@ -1,22 +1,25 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom'
+import Box from '@mui/material/Box'
 import MenuList from '@mui/material/MenuList';
 import MenuItem from '@mui/material/MenuItem';
 import MenuIcon from '@mui/icons-material/Menu';
 import ListItemText from '@mui/material/ListItemText';
 import Stack from '@mui/material/Stack'
 import Drawer from '@mui/material/Drawer';
+import { useAppSelector } from 'redux/hooks'
 import './index.css'
 
 const MainMenu: React.FC = () => {
     const history = useHistory()
+
     const [drawer, setDrawer] = useState(false)
 
     const goToCategory = (category: string) => history.push(`/category/${category}`)
 
     return (
-        <>
-            <Stack id="mainmenu" direction="row" spacing={1}>
+        <Box id="mainmenu">
+            <Stack className="stack" direction="row" spacing={1}>
                 <ListItemText onClick={() => goToCategory('per-lei')}>Per Lei</ListItemText>
                 <ListItemText onClick={() => goToCategory('per-lui')}>Per Lui</ListItemText>
                 <ListItemText onClick={() => goToCategory('per-i-piccoli')}>Per i Piccoli</ListItemText>
@@ -47,7 +50,7 @@ const MainMenu: React.FC = () => {
                     </MenuItem>
                 </MenuList>
             </Drawer>
-        </>
+        </Box>
     )
 }
 

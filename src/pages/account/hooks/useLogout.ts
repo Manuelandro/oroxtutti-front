@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux"
-import { clearCustomer } from '../../../redux/reducers/customer'
+import { clearCustomer } from 'redux/reducers/customer'
+import { clearCart } from 'redux/reducers/cart'
 
 export default function useLogout(): [() => void] {
     const dispatch = useDispatch()
@@ -7,6 +8,7 @@ export default function useLogout(): [() => void] {
     const logout = () => {
         localStorage.removeItem('token')
         dispatch(clearCustomer())
+        dispatch(clearCart())
     }
 
     return [logout]

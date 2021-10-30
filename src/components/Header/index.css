@@ -2,8 +2,11 @@
   margin-bottom: 25px;
 }
 
+.header .header-grid {
+  margin-bottom: 30px;
+}
+
 .header img {
   width: 180px;
-  margin: 0 auto 10px;
   cursor: pointer;
 }

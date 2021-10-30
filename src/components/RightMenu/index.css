@@ -3,3 +3,7 @@
   font-size: 22px;
   cursor: pointer;
 }
+
+#rightmenu .MuiBadge-colorSecondary {
+  background-color: #b12a2a;
+}

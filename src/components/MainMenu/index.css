@@ -1,25 +1,36 @@
 #mainmenu {
+  border-bottom: 1px solid #ebebeb;
+  padding-bottom: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  #mainmenu {
+    border: none;
+  }
+}
+
+#mainmenu .stack {
   max-width: 600px;
   margin: 0 auto;
 }
 
 @media only screen and (max-width: 768px) {
-  #mainmenu {
+  #mainmenu .stack {
     display: none;
   }
 }
 
-#mainmenu > .MuiListItemText-root {
+#mainmenu .stack > .MuiListItemText-root {
   margin-top: 0;
 }
 
-#mainmenu .MuiListItemText-primary {
+#mainmenu .stack .MuiListItemText-primary {
   color: #666;
   text-transform: uppercase;
   cursor: pointer;
 }
 
-#mainmenu .MuiListItemText-primary:hover {
+#mainmenu .stack .MuiListItemText-primary:hover {
   color: #000;
 }
 
