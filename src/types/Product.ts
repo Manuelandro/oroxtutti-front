@@ -10,6 +10,9 @@ export interface ProductType {
     metadata: { [k: string]: string }
     name: string
     package_dimensions: number
+    price: {
+        unit_amount: number
+    }
     shippable: null
     statement_descriptor: null
     tax_code: null

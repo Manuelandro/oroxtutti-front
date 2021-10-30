@@ -30,7 +30,7 @@ const monileTheme = createTheme({
   },
   palette: {
     primary: {
-      main: '#666'
+      main: '#4c4a4a'
     }
   }
 });

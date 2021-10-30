@@ -1,7 +1,56 @@
+.MuiGrid-container.product-detail {
+  max-width: 800px;
+  margin: 0 auto;
+  border-top: 1px solid #ebebeb;
+  padding-top: 20px;
+}
+
 .product-detail > .MuiGrid-root {
   padding-top: 0;
 }
 
-.image-gallery-content .image-gallery-slide .image-gallery-image {
+.product-image {
   max-width: 380px;
+}
+
+.details {
+  text-align: left;
+}
+
+.details .title {
+  margin-bottom: 10px;
+}
+
+.details .price {
+  margin-bottom: 20px;
+}
+
+.details .price span {
+  font-size: 14px;
+}
+
+.details .description {
+  margin-bottom: 20px;
+}
+
+.details .actions {
+  display: flex;
+  flex-direction: row;
+}
+
+.details .actions button {
+  font-size: 15px;
+  line-height: 24px;
+}
+
+.details .actions button.qty {
+  font-size: 24px;
+  line-height: 20px;
+}
+
+.details .actions h5 {
+  display: block;
+  margin: 0 14px;
+  min-width: 20px;
+  text-align: center;
 }

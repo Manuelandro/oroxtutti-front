@@ -9,9 +9,18 @@
   }
 }
 
+#mainmenu > .MuiListItemText-root {
+  margin-top: 0;
+}
+
 #mainmenu .MuiListItemText-primary {
   color: #666;
   text-transform: uppercase;
+  cursor: pointer;
+}
+
+#mainmenu .MuiListItemText-primary:hover {
+  color: #000;
 }
 
 #leftburger {

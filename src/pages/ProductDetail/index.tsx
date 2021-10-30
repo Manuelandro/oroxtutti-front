@@ -1,8 +1,9 @@
 import React from 'react'
+import numeral from 'numeral'
 import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
-import ImageGallery from 'react-image-gallery';
 import useGetProduct from './hooks/useGetProduct';
 import useAddToCart from './hooks/useAddToCart'
 import useUpdateQty from './hooks/useUpdateQty';
@@ -24,22 +25,32 @@ const ProductDetail: React.FC = () => {
 
 
     return (
-        <Grid container spacing={4} className="product-detail">
-            <Grid item>
-                <Typography variant="h2">
+        <Grid container spacing={2} className="product-detail">
+            <Grid item sm={6}>
+                <Box className="product-image">
+                    <img src={images[0]} alt={product.name}/>
+                </Box>
+            </Grid>
+            <Grid item sm={6} className="details">
+                <Typography variant="h4" className='title'>
                     {product.name}
                 </Typography>
-                <ImageGallery items={images} showThumbnails={images.length > 1}/>
-            </Grid>
-            <Grid item>
+                <Typography variant="h5" className="price">
+                    <strong>€ {numeral(product.price.unit_amount / 100).format('0.00')}</strong> <span>IVA incl.</span>
+                </Typography>
+                <Typography variant="body1" className="description">
+                    {product.description}
+                </Typography>
                 {inCart ? (
-                    <>
-                        <Button variant="contained" onClick={() => update(inCart.qty - 1)}>-</Button>
-                        {inCart.qty}
-                        <Button variant="contained" onClick={() => update(inCart.qty + 1)}>+</Button>
-                    </>
+                    <div className="actions">
+                        <Button variant="contained" onClick={() => update(inCart.qty - 1)} className="qty">-</Button>
+                        <Typography variant="h5">{inCart.qty}</Typography>
+                        <Button variant="contained" onClick={() => update(inCart.qty + 1)} className="qty">+</Button>
+                    </div>
                 ) : (
-                    <Button variant="contained" onClick={addToCart}>Add to Cart</Button>
+                    <div className="actions">
+                        <Button variant="contained" onClick={addToCart}>Aggiungi</Button>
+                    </div>
                 )}
             </Grid>
         </Grid>

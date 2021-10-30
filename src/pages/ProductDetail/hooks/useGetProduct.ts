@@ -1,19 +1,18 @@
 import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { ReactImageGalleryItem } from 'react-image-gallery'
 import { ProductType } from '../../../types/Product'
 
 type IReturn = [
     boolean,
     ProductType,
-    ReactImageGalleryItem[]
+    string[]
 ]
 
 export default function useGetProduct(): IReturn {
     const [loading, setLoading] = useState(true)
     const params = useParams() as { [k: string]: any }
     const [product, setProduct] = useState({} as ProductType)
-    const images = product.images?.map(val => ({ original: val, thumbnail: val })) as unknown as ReactImageGalleryItem[]
+    const images = product.images
 
     useEffect(() => {
         ;(async function() {
