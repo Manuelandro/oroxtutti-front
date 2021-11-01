@@ -2,6 +2,7 @@ import type { Address } from './Address'
 
 export interface Customer {
     address: Address
+    created: number
     delinquent: boolean
     email: string
     id: string

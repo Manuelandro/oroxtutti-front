@@ -1,0 +1,17 @@
+.MuiGrid-container.account {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.MuiMenuItem-root.active {
+  background-color: rgba(0, 0, 0, 0.04);
+  font-weight: 600;
+}
+
+.account .right {
+  text-align: left;
+}
+
+.account .right h4 {
+  font-weight: 600;
+}

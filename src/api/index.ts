@@ -137,6 +137,7 @@ export async function removeFromCart(token: string, productId: string) {
 
 }
 
+/* PAYMENRS */
 
 export async function createSession(token: string) {
     const res = await fetch('http://localhost:3001/payment/create', {
@@ -153,4 +154,23 @@ export async function createSession(token: string) {
 
     return res
 
+}
+
+/* ORDERS */
+
+export async function getOrders(token: string) {
+    const res = await fetch('http://localhost:3001/orders/list', {
+        method: 'GET',
+        headers: {
+            "Content-Type": 'application/json',
+            "Authorization": `Bearer ${token}`
+
+        }
+    }).then(res => res.json())
+
+    if (res.error) {
+        throw new Error(res.error)
+    }
+
+    return res
 }

@@ -3,6 +3,7 @@ import type { Customer } from '../../types/Customer'
 
 const initialState: Customer = {
     address: {},
+    created: 0,
     delinquent: false,
     email: '',
     id: '',
@@ -19,6 +20,7 @@ const customerSlice = createSlice({
     reducers: {
         setCustomer: (state, action: PayloadAction<Record<string, any>>) => {
             state.address = action.payload.address
+            state.created = action.payload.created
             state.delinquent = action.payload.delinquent
             state.email = action.payload.email
             state.id = action.payload.id
