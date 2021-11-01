@@ -15,6 +15,7 @@ import Home from './pages/home'
 import Category from './pages/category'
 import ProductDetail from './pages/productdetail'
 import Cart from './pages/cart'
+import Success from './pages/success'
 import Account from './pages/account'
 import { useAppSelector } from './redux/hooks';
 
@@ -62,6 +63,14 @@ const App: React.FC = () => {
                             <Elements stripe={stripePromise}>
                               <Cart />
                             </Elements>
+                          )
+                      }
+                  </Route>
+                  <Route path="/success">
+                      {!token ? (
+                            <Redirect to={{ pathname: "/login-register" }} />
+                          ) : (
+                            <Success />
                           )
                       }
                   </Route>

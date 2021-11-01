@@ -21,7 +21,7 @@ const ProductDetail: React.FC = () => {
         return null
     }
 
-    const inCart = cart.items.find(item => item.id === product.id)
+    const inCart = cart?.items?.find(item => item.id === product.id)
 
 
     return (

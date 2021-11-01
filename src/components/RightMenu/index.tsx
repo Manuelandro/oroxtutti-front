@@ -17,7 +17,7 @@ const RightMenu: React.FC = () => {
     const dispatch = useDispatch()
     const history = useHistory()
     const token = useAppSelector(s => s.customer.token)
-    const cartItemsLength = useAppSelector(s => s.cart.items.length)
+    const cartItemsLength = useAppSelector(s => s.cart?.items?.length)
 
     useEffect(() => {
         if (!token) return

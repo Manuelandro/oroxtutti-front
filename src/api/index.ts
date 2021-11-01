@@ -140,7 +140,7 @@ export async function removeFromCart(token: string, productId: string) {
 /* PAYMENRS */
 
 export async function createSession(token: string) {
-    const res = await fetch('http://localhost:3001/payment/create', {
+    const res = await fetch('http://localhost:3001/payment/session/create', {
         headers: {
             "Content-Type": 'application/json',
             "Authorization": `Bearer ${token}`
@@ -156,6 +156,28 @@ export async function createSession(token: string) {
 
 }
 
+export async function getSession(token: string, sessionId: string) {
+    const res = await fetch('http://localhost:3001/payment/session/get', {
+        headers: {
+            "Content-Type": 'application/json',
+            "Authorization": `Bearer ${token}`
+        },
+        method: 'POST',
+        body: JSON.stringify({
+            sessionId
+        })
+    }).then(res => res.json())
+
+    if (res.error) {
+        throw new Error(res.error)
+    }
+
+    return res
+
+}
+
+
+
 /* ORDERS */
 
 export async function getOrders(token: string) {
@@ -166,6 +188,27 @@ export async function getOrders(token: string) {
             "Authorization": `Bearer ${token}`
 
         }
+    }).then(res => res.json())
+
+    if (res.error) {
+        throw new Error(res.error)
+    }
+
+    return res
+}
+
+
+export async function getOrder(token: string, paymentIntent: string) {
+    const res = await fetch('http://localhost:3001/orders/order', {
+        method: 'POST',
+        headers: {
+            "Content-Type": 'application/json',
+            "Authorization": `Bearer ${token}`
+
+        },
+        body: JSON.stringify({
+            paymentIntent
+        })
     }).then(res => res.json())
 
     if (res.error) {
